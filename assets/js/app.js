@@ -1,5 +1,6 @@
 var x = "";
 var y = "";
+var eventsArr = []; //create array to store event data
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -52,8 +53,32 @@ function showPosition(position) {
 
     L.control.layers(baseLayers, overlays).addTo(map);
 
-
+    getEvents();
 
 }
 
 getLocation();
+
+function getEvents(){
+    queryURL = "https://api.seatgeek.com/2/events?lat=" + x + "&lon=" + y + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            for(i=0; i<response.events.length; i++){
+                var event = {};
+                event.title = response.events[i].short_title;
+                event.datetime = response.events[i].datetime_local;
+                event.venueName = response.events[i].venue.name;
+                event.venueAddr = response.events[i].venue.address;
+                event.venueCity = response.events[i].venue.city;
+                event.venueSt = response.events[i].venue.state;
+                event.venueZip = response.events[i].venue.postal_code;
+                event.venueLat = response.events[i].venue.location.lat;
+                event.venueLon = response.events[i].venue.location.lon;
+                eventsArr.push(event);
+            }
+        });
+}
+
