@@ -1,5 +1,5 @@
-var x;
-var y;
+var x = "";
+var y = "";
 var eventsArr = []; //create array to store event data
 
 function getLocation() {
