@@ -34,6 +34,93 @@ body {
     padding: 0 15px;
 }
 
+/**** Night Out ****/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1f1f1f;
+  color: #cccccc;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.no-nav {
+  background-color: #1c1c1c;
+}
+
+.txt-align-center {
+  text-align: center;
+}
+
+.no-header {
+  background-color: #161717;
+}
+
+.no-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.no-hero h2 {
+  position: absolute;
+  top: 230px;
+  font-size: 4.7rem;
+  font-style: italic;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.no-hero h1 {
+  margin-top: 30px;
+  font-size: 10rem;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.no-input {
+  border-radius: 0;
+}
+input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  color: #cccccc;
+}
+input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  color: #cccccc;
+}
+input[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  color: #cccccc;
+}
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+  color: #cccccc;
+}
+
+.no-brand {
+  border: 3px solid #ffffff;
+  padding: 3px 7px;
+}
+
+.no-btn-gray {
+  border-radius: 0;
+  background-color: #cccccc;
+}
+
+.no-background {
+  background: url(../images/hero.png) center center no-repeat;
+  width: 100%;
+  height: 600px;
+}
 
 /**** Night Out ****/
 
