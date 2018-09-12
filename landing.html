@@ -44,7 +44,7 @@
         <main role="main">
         
             <!-- Main jumbotron for a primary marketing message or call to action -->
-            <div class="jumbotron no-pad no-background no-hero">
+            <div class="jumbotron no-pad no-background-hero no-hero">
                 <h2>WELCOME TO YOUR</h2>
                 <h1>NIGHT OUT</h1>
             </div>
@@ -52,22 +52,47 @@
             <div class="container">
                 <!-- Example row of columns -->
                 <div class="row">
-                    <div class="col-md-4">
-                        
-                    </div>
-                    <div class="col-md-4">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control no-input" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
-                            <button class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+
+                    <div class="col-md-12 no-form-m">
+                        <form class="form-inline my-2 my-lg-0 justify-content-center">
+                            <input class="no-input-m" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
+                            <button class="btn no-btn-gray-m my-2 my-sm-0" type="submit"><i class="fas fa-search no-i-m"></i></button>
                         </form>
+                        <p>SEARCH BY CITY, STATE OR ZIP CODE</p>
                     </div>
-                    <div class="col-md-4">
-                        
-                    </div>
+ 
                 </div>
         
                 <hr>
-        
+                
+                <div class="row">
+                    <div class="col-md-5 categories">
+                        <h2 class="no-h2">CATEGORIES</h2>
+                        <img src="assets/images/cat_img_1.jpg" alt="Image of people acting on a stage" />
+                        <p>...OR GET SOME HELP</p>
+                        <ul class="cat-menu">
+                            <li><a href="#">CHILDREN AND FAMILY FUN</a></li>
+                            <li><a href="#">FOLKLORE AND SHADOWS</a></li>
+                            <li><a href="#">ART AND LOCAL HISTORY</a></li>
+                            <li><a href="#">OUTDOOR AND RECREATION</a></li>
+                            <li><a href="#">MUSIC AND LIVE EVENTS</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5 comments">
+                        <h2 class="no-h2">SHOUT OUTS</h2>
+                        <ul>
+                            <li>
+                                <img src="assets/images/comment_img_1.jpg" alt="Beautiful photograph of the Blue Ridge Mountains" />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam nam rem enim nemo autem, tempore deserunt voluptas laudantium quam error vero accusamus! <span class="author">- Someone Special</span></p>
+                            </li>
+                            <li>
+                                <img src="assets/images/comment_img_2.jpg" alt="Evening shot of brightly colored sign and buildings" />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ab numquam nostrum harum ex, dolorum et enim dolore id expedita vitae facere, fugit rem cum earum asperiores quam aspernatur corrupti? <span class="author">- Someone Great</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div> <!-- /container -->
         
         </main>

@@ -52,6 +52,12 @@ a:hover {
   text-decoration: underline;
 }
 
+.no-h2 {
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
 .no-nav {
   background-color: #1c1c1c;
 }
@@ -90,6 +96,16 @@ a:hover {
 .no-input {
   border-radius: 0;
 }
+
+.no-btn-gray {
+  border-radius: 0;
+  background-color: #cccccc;
+}
+
+.no-btn-gray:hover {
+  background-color: #1c1c1c;
+}
+
 input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-size: 14px;
   font-weight: bold;
@@ -111,15 +127,124 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
   padding: 3px 7px;
 }
 
-.no-btn-gray {
-  border-radius: 0;
-  background-color: #cccccc;
+.no-form-m p {
+  padding-top: 7px;
+  color: #cccccc;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.no-background {
+.no-input-m {
+  border-radius: 0;
+  height: 70px;
+  width: 500px;
+  padding: 10px 10px 10px 35px;
+  font-size: 2rem;
+  color: #777777;
+}
+
+.no-btn-gray-m {
+  border-radius: 0;
+  background-color: #cccccc;
+  height: 70px;
+  width: 70px;
+}
+
+.no-btn-gray-m:hover {
+  background-color: #1c1c1c;
+}
+
+.no-i-m {
+  font-size: 3rem;
+}
+
+input.no-input-m[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #cccccc;
+}
+input.no-input-m[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  color: #cccccc;
+}
+input.no-input-m[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  color: #cccccc;
+}
+input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
+  color: #cccccc;
+}
+
+.no-background-hero {
   background: url(../images/hero.png) center center no-repeat;
   width: 100%;
   height: 600px;
+}
+
+.categories img, .comments img {
+  width: 100%;
+}
+
+.categories p {
+  font-size: 1.3rem;
+  color: #cccccc;
+  font-weight: bolder;
+  font-style: italic;
+  text-align: right;
+  padding-top: 7px;
+}
+
+.categories .cat-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.categories .cat-menu li {
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #282828;
+}
+
+.categories .cat-menu li:last-child {
+  border-bottom: none;
+}
+
+.categories .cat-menu li a {
+    display: block;
+    color: #cccccc;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+.categories .cat-menu li a:hover {
+  text-decoration: none;
+  background-color: #161717;
+  transition: 500ms ease all;
+}
+
+.comments ul {
+  list-style: none;
+  padding: 0;
+  color: #cccccc;
+}
+
+.comments p {
+  padding: 7px 0 0 3px;
+}
+
+.comments span.author {
+  font-style: italic;
+}
+
+.no-footer {
+  background-color: #161717;
+  font-size: 11px;
+}
+
+.no-footer-text {
+  color: #b97cf7;
 }
 
 /**** Night Out ****/
