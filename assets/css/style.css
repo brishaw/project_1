@@ -34,12 +34,304 @@ body {
     padding: 0 15px;
 }
 
+/**** Night Out ****/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1f1f1f;
+  color: #cccccc;
+}
+
+.br-0 {
+  border-radius: 0;
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.hr-color-1 {
+  border-color: #b97cf7;
+}
+
+.mt-5r {
+  margin-top: 5rem;
+}
+
+.mt-p25r {
+  margin-top: .25rem;
+}
+
+.mb-3r {
+  margin-bottom: 3rem;
+}
+
+.no-h2 {
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.no-nav {
+  background-color: #1c1c1c;
+}
+
+.txt-align-center {
+  text-align: center;
+}
+
+.no-header {
+  background-color: #161717;
+}
+
+.no-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.no-hero h2 {
+  position: absolute;
+  top: 230px;
+  font-size: 4.7rem;
+  font-style: italic;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.no-hero h1 {
+  margin-top: 30px;
+  font-size: 10rem;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.no-input {
+  border-radius: 0;
+}
+
+.no-btn-gray {
+  border-radius: 0;
+  background-color: #cccccc;
+}
+
+.no-btn-gray:hover {
+  background-color: #1c1c1c;
+}
+
+input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  color: #cccccc;
+}
+input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  color: #cccccc;
+}
+input[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  color: #cccccc;
+}
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+  color: #cccccc;
+}
+
+.no-brand {
+  border: 3px solid #ffffff;
+  padding: 3px 7px;
+}
+
+.no-form-m p {
+  padding-top: 7px;
+  color: #cccccc;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.no-input-m {
+  border-radius: 0;
+  height: 70px;
+  width: 500px;
+  padding: 10px 10px 10px 35px;
+  font-size: 2rem;
+  color: #777777;
+}
+
+.no-btn-gray-m {
+  border-radius: 0;
+  background-color: #cccccc;
+  height: 70px;
+  width: 70px;
+}
+
+.no-btn-gray-m:hover {
+  background-color: #1c1c1c;
+}
+
+.no-i-m {
+  font-size: 3rem;
+}
+
+input.no-input-m[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #cccccc;
+}
+input.no-input-m[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  color: #cccccc;
+}
+input.no-input-m[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  color: #cccccc;
+}
+input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
+  color: #cccccc;
+}
+
+.no-background-hero {
+  background: url(../images/hero.png) center center no-repeat;
+  width: 100%;
+  height: 600px;
+}
+
+.categories img, .comments img {
+  width: 100%;
+}
+
+.categories p {
+  font-size: 1.3rem;
+  color: #cccccc;
+  font-weight: bolder;
+  font-style: italic;
+  text-align: right;
+  padding-top: 7px;
+}
+
+.categories .cat-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.categories .cat-menu li {
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #282828;
+}
+
+.categories .cat-menu li:last-child {
+  border-bottom: none;
+}
+
+.categories .cat-menu li a {
+    display: block;
+    color: #cccccc;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+.categories .cat-menu li a:hover {
+  text-decoration: none;
+  background-color: #161717;
+  transition: 500ms ease all;
+}
+
+.comments ul {
+  list-style: none;
+  padding: 0;
+  color: #cccccc;
+}
+
+.comments p {
+  padding: 7px 0 0 3px;
+}
+
+.comments span.author {
+  font-style: italic;
+}
+
+
+/*  Results Page  */
+
+.events .events-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.events .events-menu li {
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #282828;
+}
+
+.events .events-menu li:last-child {
+  border-bottom: none;
+}
+
+.events .events-menu li a {
+    display: block;
+    color: #cccccc;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+.events .events-menu li a:hover {
+  text-decoration: none;
+  background-color: #161717;
+  transition: 500ms ease all;
+}
+
+.results .results-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.results .results-menu li {
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #282828;
+}
+
+.results .results-menu li:last-child {
+  border-bottom: none;
+}
+
+.results .results-menu li a {
+    display: block;
+    color: #cccccc;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+.results .results-menu li a:hover {
+  text-decoration: none;
+  background-color: #161717;
+  transition: 500ms ease all;
+}
+/*            */
+.no-footer {
+  background-color: #161717;
+  font-size: 11px;
+}
+
+.no-footer-text {
+  color: #b97cf7;
+}
 
 /**** Night Out ****/
 
 #map {
     width: 100%;
-    height: 400px;
+    height: 600px;
     }
 
 .no-pad {
