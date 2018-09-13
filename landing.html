@@ -35,8 +35,8 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control no-input" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
-                    <button class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    <input class="form-control no-input zip-input" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
+                    <button class="btn no-btn-gray my-2 my-sm-0 zip-search" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
         </nav>
@@ -53,12 +53,12 @@
                 <!-- Example row of columns -->
                 <div class="row">
 
-                    <div class="col-md-12 no-form-m">
+                    <div class="col-md-12 no-form-m"> <!-- Something about this form is keeping input from being captured. Form above works fine-->
                         <form class="form-inline my-2 my-lg-0 justify-content-center">
-                            <input class="no-input-m" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
-                            <button class="btn no-btn-gray-m my-2 my-sm-0" type="submit"><i class="fas fa-search no-i-m"></i></button>
+                            <input class="form-control no-input-m zip-input" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
+                            <button class="btn no-btn-gray-m my-2 my-sm-0 zip-search" type="submit"><i class="fas fa-search no-i-m"></i></button>
                         </form>
-                        <p>SEARCH BY CITY, STATE OR ZIP CODE</p>
+                        <p>SEARCH BY ZIP CODE</p>
                     </div>
  
                 </div>
@@ -108,7 +108,7 @@
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-        <!-- <script src="assets/js/app.js"></script> -->
+        <!-- <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script> -->
+        <script src="assets/js/app.js"></script>
     </body>
 </html>
