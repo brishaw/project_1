@@ -1,5 +1,6 @@
-var x = "";
-var y = "";
+var x;
+var y;
+var zip;
 var eventsArr = []; //create array to store event data
 
 function getLocation() {
@@ -57,10 +58,15 @@ function showPosition(position) {
 
 }
 
-getLocation();
+// getLocation();
 
 function getEvents(){
-    queryURL = "https://api.seatgeek.com/2/events?lat=" + x + "&lon=" + y + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    // if(x && y){
+    //     queryURL = "https://api.seatgeek.com/2/events?lat=" + x + "&lon=" + y + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    // }
+    // else {
+        queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    // }
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -82,3 +88,9 @@ function getEvents(){
         });
 }
 
+$(".zip-search").on("click", function(event){
+    event.preventDefault();
+    zip = $(".zip-input").val();
+    $(".zip-input").val("");
+    getEvents();
+});
