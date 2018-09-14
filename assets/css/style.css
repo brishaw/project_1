@@ -29,7 +29,7 @@ body {
 /* Not required for template or sticky footer method. */
 
 .container {
-    width: auto;
+    /* width: auto; */
     max-width: 980px;
     padding: 0 15px;
 }
@@ -40,6 +40,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #1f1f1f;
   color: #cccccc;
+  background-image: url("../images/bottom_1.png");
+  background-position: bottom center;
+  background-image: url(../images/bottom_1.png);
+  background-repeat: no-repeat;
 }
 
 .br-0 {
@@ -81,12 +85,29 @@ a:hover {
   background-color: #1c1c1c;
 }
 
+.bor-top-trans {
+  border-top: 2px solid transparent;
+}
+
+.nav-item.active {
+  border-top: 2px solid #b97cf7;
+  font-weight: bold;
+}
+
+.bg-pur {
+  background-color: #b97cf7;
+}
+
 .txt-align-center {
   text-align: center;
 }
 
 .no-header {
   background-color: #161717;
+}
+
+.no-header .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(185, 124, 247, .9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .no-hero {
@@ -114,6 +135,7 @@ a:hover {
 
 .no-input {
   border-radius: 0;
+  border-width: 0;
 }
 
 .no-btn-gray {
@@ -122,10 +144,10 @@ a:hover {
 }
 
 .no-btn-gray:hover {
-  background-color: #1c1c1c;
+  background-color: #575757;
 }
 
-input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+input[type="text"]::-webkit-input-placeholder, input[type="email"]::-webkit-input-placeholder, textarea.color-ccc::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-size: 14px;
   font-weight: bold;
   font-style: italic;
@@ -157,6 +179,7 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
 
 .no-input-m {
   border-radius: 0;
+  border-width: 0;
   height: 70px;
   width: 500px;
   padding: 10px 10px 10px 35px;
@@ -166,13 +189,13 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
 
 .no-btn-gray-m {
   border-radius: 0;
-  background-color: #cccccc;
+  background-color: #b97cf7;
   height: 70px;
   width: 70px;
 }
 
 .no-btn-gray-m:hover {
-  background-color: #1c1c1c;
+  background-color: #cccccc;
 }
 
 .no-i-m {
@@ -257,7 +280,6 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
   font-style: italic;
 }
 
-
 /*  Results Page  */
 
 .events .events-menu {
@@ -327,6 +349,90 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
   color: #b97cf7;
 }
 
+/**** Services page ****/
+
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Dummy devices (replace them with your own or something else entirely!)
+ */
+
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color: #333;
+  border-radius: 21px;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5;
+}
+
+
+/*
+ * Extra utilities
+ */
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.flex-equal > * {
+  -ms-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden { overflow: hidden; }
+
 /**** Night Out ****/
 
 #map {
@@ -336,4 +442,67 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
 
 .no-pad {
     padding: 0;
+}
+
+@media only screen and (max-width: 880px) {
+    .no-hero h1 {
+        font-size: 8rem;
+    }
+
+    .no-hero h2 {
+        font-size: 4rem;
+        line-height: 125px;
+    }
+}
+
+@media only screen and (max-width: 705px) {
+    .no-hero h1 {
+        font-size: 7rem;
+    }
+
+    .no-hero h2 {
+        font-size: 3.7rem;
+    }
+}
+
+@media only screen and (max-width: 704px) {
+    .no-hero h1 {
+        font-size: 4rem;
+    }
+
+    .no-hero h2 {
+        font-size: 2rem;
+        line-height: 190px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .no-input {
+      width: 325px;
+    }
+
+    .no-input-m {
+      width: 300px;
+      height: 50px;
+      padding: 10px 10px 12px 10px;
+    }
+
+    .no-btn-gray-m {
+      border-radius: 0;
+      background-color: #cccccc;
+      height: 50px;
+      width: 50px;
+  }
+
+  input.no-input-m[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 1.5rem;
+  }
+
+  .no-btn-gray-m {
+    padding: 0;
+  }
+  .no-i-m {
+    font-size: 2.2rem;
+  }
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Night Out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md no-header fixed-top">
+    
+        <div class="container">
+    
+            <a class="navbar-brand no-brand" href="index.html">NIGHT OUT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item bor-top-trans active">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control no-input" type="text" placeholder="SEARCH NIGHT OUT" aria-label="SEARCH NIGHT OUT">
+                    <button class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+    
+    
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron no-pad no-background-hero no-hero br-0">
+            <h2>WELCOME TO YOUR</h2>
+            <h1>NIGHT OUT</h1>
+        </div>
+
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 br-0">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-muted">Night Out Developer</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">Tyler</a>
+                            </h3>
+                            <div class="mb-1 text-muted">"Do not take life too seriously. You will never get out of it alive.</div>
+                            <p class="card-text mb-auto">Lorem ipsum dolor sit amet consectetur ipsum commodi!</p>
+                            <a href="#">Continue reading</a>
+                        </div>
+                        <img class="card-img-right flex-auto d-none d-md-block" src="assets/images/download.svg"" alt=" Card image cap">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 br-0">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-muted">Night Out Developer</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">Taylor</a>
+                            </h3>
+                            <div class="mb-1 text-muted">"My fake plants died because I did not pretend to water them."</div>
+                            <p class="card-text mb-auto">Lorem ipsum dolor animi quae. Modi, dicta mollitia.</p>
+                            <a href="#">Continue reading</a>
+                        </div>
+                        <img class="card-img-right flex-auto d-none d-md-block" src="assets/images/download.svg"" alt="Card image cap">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 br-0">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-muted">Night Out Developer</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">Ethan</a>
+                            </h3>
+                            <div class="mb-1 text-muted">"Behind every great man is a woman rolling her eyes."</div>
+                            <p class="card-text mb-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam earum incidunt id.</p>
+                            <a href="#">Continue reading</a>
+                        </div>
+                        <img class="card-img-right flex-auto d-none d-md-block" src="assets/images/download.svg"" alt=" Card image cap">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 br-0">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-muted">Night Out Developer</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">Brian</a>
+                            </h3>
+                            <div class="mb-1 text-muted">"Always remember that you are absolutely unique. Just like everyone else."</div>
+                            <p class="card-text mb-auto">Lorem ipsum dolor sit amet consectetur adipisicing!</p>
+                            <a href="#">Continue reading</a>
+                        </div>
+                        <img class="card-img-right flex-auto d-none d-md-block" src="assets/images/download.svg"" alt=" Card image cap">
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /container -->
+
+    </main>
+    <footer class="footer no-footer">
+        <div class="container txt-align-center">
+            <span class="no-footer-text">Night Out App</span> &copy 2018 UNC Coding BootCamp
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
