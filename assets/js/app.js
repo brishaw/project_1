@@ -39,9 +39,10 @@ function showPosition(position) {
         // center: [39.73, -104.99],
         center: [x, y],
         zoom: 15,
-        layers: [grayscale, cities]
+        layers: [grayscale, cities],
+        scrollWheelZoom: false
     });
-
+    console.log(map);
     var baseLayers = {
         "Grayscale": grayscale,
         "Streets": streets
