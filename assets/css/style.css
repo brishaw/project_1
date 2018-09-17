@@ -81,6 +81,10 @@ a:hover {
   font-weight: bold;
 }
 
+.no-h3 {
+  font-style: italic;
+}
+
 .no-nav {
   background-color: #1c1c1c;
 }

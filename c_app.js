@@ -15,12 +15,13 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
-var is_root = "/Users/brianshaw/Documents/UNCBootCamp/code/project_1/index.html";
-var x = "";
-var y = "";
+
+
+var x;
+var y;
 var zip;
-var eventsArr = []; // create array to store event data
-var mealsArr = []; // array to store restaurants
+var eventsArr = []; //create array to store event data
+var event = { eventUrl: "" };
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -44,7 +45,7 @@ function showPosition(position) {
     // L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
     //     L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
     //     L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-         L.marker([x, y]).bindPopup('This is Golden, CO.').addTo(cities);
+    //     L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 
 
     var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -62,9 +63,7 @@ function showPosition(position) {
         layers: [grayscale, cities],
         scrollWheelZoom: false
     });
-
     console.log(map);
-
     var baseLayers = {
         "Grayscale": grayscale,
         "Streets": streets
@@ -83,18 +82,19 @@ function showPosition(position) {
 getLocation();
 
 function getEvents() {
+    // if(x && y){
+    //     queryURL = "https://api.seatgeek.com/2/events?lat=" + x + "&lon=" + y + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    // }
+    // else {
     queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    // }
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-
-        console.log("Response: " + response);
-        console.log("queryURL: " + queryURL);
         eventsArr = [];
-
         for (i = 0; i < response.events.length; i++) {
-            var event = {};
+            event = {};
             event.title = response.events[i].short_title;
             event.datetime = response.events[i].datetime_local;
             event.venueName = response.events[i].venue.name;
@@ -104,30 +104,25 @@ function getEvents() {
             event.venueZip = response.events[i].venue.postal_code;
             event.venueLat = response.events[i].venue.location.lat;
             event.venueLon = response.events[i].venue.location.lon;
-
+            event.eventUrl = response.events[i].url;
             eventsArr.push(event);
         }
     });
 }
 
+
+
+
+
+
+
+//**** Run this zip-search from the results page *****//
+
 $(".zip-search").on("click", function (event) {
 
-    // console.log(window.location.pathname);
-    // window.location.href = "results.html";
-
-    if(window.location.pathname == is_root) {
-        alert("root!");
-        window.location.href = "results.html";
-    } else {
-        alert("not root");
-    }
-    
+    window.location.href = "results.html";
 
     event.preventDefault();
-
-
-
-
 
     zip = $(".zip-input").val();
 
@@ -135,43 +130,40 @@ $(".zip-search").on("click", function (event) {
 
     // Code for the push
     dataRef.ref().push({
-
         zip: zip
-
     })
+
+    console.log("ZIP CODE EQUALS: " + zip);
 
     getEvents();
 
     setTimeout(setEventsHtml, 500);
-
 });
 
 dataRef.ref().on("child_added", function (childSnapshot) {
 
     // Log everything that's coming out of snapshot
     console.log("child snapshot of zip: " + childSnapshot.val().zip);
-    var theZip = childSnapshot.val().zip;
-    console.log("theZip: " + theZip);
-
 
     $(".zip_result").text(childSnapshot.val().zip);
+
 
     // Handle the errors
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
+    $(".events-menu").text("No events at this zip code.");
 });
 
+console.log("B ZIP CODE EQUALS: " + zip);
+
 function setEventsHtml() {
-
     $(".events-menu").empty();
-
     for (i = 0; i < 5; i++) {
-
         var li = $("<li>");
-
         li.html($("<a>").text(eventsArr[i].title));
-        
         $(".events-menu").append(li);
+        console.log("EVENTS ARR: " + eventsArr[0].title);
     }
 }
 
+console.log("EVENTS ARR: " + eventsArr[0].title);
