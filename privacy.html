@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Night Out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md no-header fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand no-brand" href="index.html">NIGHT OUT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item bor-top-trans">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item bor-top-trans active">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control no-input" type="text" placeholder="SEARCH NIGHT OUT" aria-label="SEARCH NIGHT OUT">
+                    <button class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+
+        </div>
+    </nav>
+
+
+<main role="main" class="container mt-2r">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                Night Out
+            </h3>
+
+                <div class="blog-post">
+                    <h2 class="blog-post-title">A Privacy Policy</h2>
+                    <p class="blog-post-meta">September 17, 2018</p>
+                
+                    <h3 id="priv-notice">Privacy Notice</h3>
+                    <p>This privacy notice discloses the privacy practices for the Night Out website and application. This privacy
+                        notice applies solely to information collected by this website. It will notify you of the following:</p>
+                
+                    <p>What personally identifiable information is collected from you through the website, how it is used and with whom
+                        it may be shared.</p>
+                
+                    <p>What choices are available to you regarding the use of your data.</p>
+                
+                    <p>The security procedures in place to protect the misuse of your information.</p>
+                
+                    <p>How you can correct any inaccuracies in the information.</p>
+                
+                    <h3 id="info-coll">Information Collection, Use, and Sharing</h3>
+                    <p>We are the sole owners of the information collected on this site. We only have access to/collect information
+                        that you voluntarily give us via email or other direct contact from you. We will not sell or rent this
+                        information to anyone.</p>
+                
+                    <p>We will use your information to respond to you, regarding the reason you contacted us. We will not share your
+                        information with any third party outside of our organization, other than as necessary to fulfill your request,
+                        e.g. to ship an order.</p>
+                
+                    <p>Unless you ask us not to, we may contact you via email in the future to tell you about specials, new products or
+                        services, or changes to this privacy policy.</p>
+                
+                    <h3 id="acc-control">Your Access to and Control Over Information</h3>
+                    <p>You may opt out of any future contacts from us at any time. You can do the following at any time by contacting
+                        us via the email address or phone number given on our website:</p>
+                
+                    <ol>
+                        <li>See what data we have about you, if any.</li>
+                        <li>Change/correct any data we have about you.</li>
+                        <li>Have us delete any data we have about you.</li>
+                        <li>Express any concern you have about our use of your data.</li>
+                    </ol>
+                    <h3 id="security">Security</h3>
+                    <p>We take precautions to protect your information. When you submit sensitive information via the website, your
+                        information is protected both online and offline.</p>
+                
+                    <p>Wherever we collect sensitive information (such as credit card data), that information is encrypted and
+                        transmitted to us in a secure way. You can verify this by looking for a lock icon in the address bar and
+                        looking for "https" at the beginning of the address of the Web page.</p>
+                
+                    <p>While we use encryption to protect sensitive information transmitted online,we also protect your information
+                        offline.</p>
+                    <p>Only employees who need the information to perform a specific job (for example, billing or customer service) are
+                        granted access to personally identifiable information.</p>
+                    </p>The computers/servers in which we store personally identifiable
+                    information are kept in a secure environment.</p>
+                
+                    If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at
+                    646-618-8898 or via <a href="mailto:privacy@trilogyed.com">email</a>.</p>
+                    <hr>
+                
+                </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-3 mb-3 bg-light rounded no-priv-nav">               
+                <h4 class="font-italic">Navigation</h4>
+                <ol class="list-unstyled mb-0">
+                    <li><a href="#priv-notice">Privacy Notice</a></li>
+                    <li><a href="#info-coll">Information Collection</a></li>
+                    <li><a href="#acc-control">Access Over Information</a></li>
+                    <li><a href="#security">Security</a></li>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+
+            
+
+    
+
+<footer class="footer no-footer">
+    <div class="container txt-align-center">
+        <span class="no-footer-text">Night Out App</span> &copy 2018 UNC Coding BootCamp
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+    // Select all links with hashes
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function (event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                    &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function () {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+</script>
+</body>
+
+</html>

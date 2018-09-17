@@ -67,6 +67,10 @@ a:hover {
   margin-top: 5rem;
 }
 
+.mt-2r {
+  margin-top: 2rem;
+}
+
 .mt-p25r {
   margin-top: .25rem;
 }
@@ -172,6 +176,16 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
   padding: 3px 7px;
 }
 
+.no-button {
+  color: #000000;
+  background-color: #b97cf7;
+  border-color: #b97cf7;
+}
+
+.no-button:hover {
+  background-color: #a760ee;
+}
+
 .no-form-m p {
   padding-top: 7px;
   color: #cccccc;
@@ -191,15 +205,15 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
   color: #777777;
 }
 
-.no-btn-gray-m {
+.no-btn-m {
   border-radius: 0;
   background-color: #b97cf7;
   height: 70px;
   width: 70px;
 }
 
-.no-btn-gray-m:hover {
-  background-color: #cccccc;
+.no-btn-m:hover {
+  background-color: #7433af;
 }
 
 .no-i-m {
@@ -353,10 +367,46 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
   color: #b97cf7;
 }
 
+a.no-footer-text {
+  color: #b97cf7;
+  text-decoration: none;
+}
+a:hover.no-footer-text {
+  color: #b97cf7;
+  text-decoration: none;
+}
+
+
 /**** Services page ****/
 
 .container {
   max-width: 960px;
+}
+
+.no-mobile-disp {
+  position: relative;
+}
+
+.screen-shot-header img {
+  position: absolute;
+  width: 92%;
+  left: 12px;
+  top: 55px;
+}
+
+.screen-shot-header-180 img {
+  position: absolute;
+  width: 92%;
+  left: 12px;
+  top: -5px;
+  transform: rotate(-180deg);
+}
+
+.screen-shot img {
+  position: absolute;
+  width: 90%;
+  left: 15px;
+  top: 35px;
 }
 
 /*
@@ -404,6 +454,10 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
   border-radius: 5px;
 }
 
+.product-device::before img {
+  width: 95%;
+}
+
 .product-device-2 {
   top: -25%;
   right: auto;
@@ -412,7 +466,18 @@ input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
   background-color: #e5e5e5;
 }
 
+.no-priv-nav {
+  position: fixed;
+}
 
+.no-priv-nav a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.no-priv-nav a:hover {
+  text-decoration: underline;
+}
 /*
  * Extra utilities
  */
