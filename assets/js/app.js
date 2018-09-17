@@ -2,7 +2,7 @@ var x;
 var y;
 var zip;
 var eventsArr = []; //create array to store event data
-var event = {eventUrl: ""};
+var event = { eventUrl: "" };
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -62,36 +62,36 @@ function showPosition(position) {
 
 // getLocation();
 
-function getEvents(){
+function getEvents() {
     // if(x && y){
     //     queryURL = "https://api.seatgeek.com/2/events?lat=" + x + "&lon=" + y + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
     // }
     // else {
-        queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
     // }
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            eventsArr = [];
-            for(i=0; i<response.events.length; i++){
-                event = {};
-                event.title = response.events[i].short_title;
-                event.datetime = response.events[i].datetime_local;
-                event.venueName = response.events[i].venue.name;
-                event.venueAddr = response.events[i].venue.address;
-                event.venueCity = response.events[i].venue.city;
-                event.venueSt = response.events[i].venue.state;
-                event.venueZip = response.events[i].venue.postal_code;
-                event.venueLat = response.events[i].venue.location.lat;
-                event.venueLon = response.events[i].venue.location.lon;
-                event.eventUrl = response.events[i].url;
-                eventsArr.push(event);
-            }
-        });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        eventsArr = [];
+        for (i = 0; i < response.events.length; i++) {
+            event = {};
+            event.title = response.events[i].short_title;
+            event.datetime = response.events[i].datetime_local;
+            event.venueName = response.events[i].venue.name;
+            event.venueAddr = response.events[i].venue.address;
+            event.venueCity = response.events[i].venue.city;
+            event.venueSt = response.events[i].venue.state;
+            event.venueZip = response.events[i].venue.postal_code;
+            event.venueLat = response.events[i].venue.location.lat;
+            event.venueLon = response.events[i].venue.location.lon;
+            event.eventUrl = response.events[i].url;
+            eventsArr.push(event);
+        }
+    });
 }
 
-$(".zip-search").on("click", function(event){
+$(".zip-search").on("click", function (event) {
     event.preventDefault();
     zip = $(".zip-input").val();
     $(".zip-input").val("");
@@ -100,9 +100,9 @@ $(".zip-search").on("click", function(event){
 });
 
 
-function setEventsHtml(){
+function setEventsHtml() {
     $(".events-menu").empty();
-    for(i=0; i<5; i++){
+    for (i = 0; i < 5; i++) {
         var li = $("<li>");
         li.html($("<a>").text(eventsArr[i].title));
         $(".events-menu").append(li);
