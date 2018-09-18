@@ -13,8 +13,8 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
-var is_root = "/Users/brianshaw/Documents/UNCBootCamp/code/project_1/index.html";
-//var is_root = "https://brishaw.github.io/project_1/";
+//var is_root = "/Users/brianshaw/Documents/UNCBootCamp/code/project_1/index.html";
+var is_root = "https://brishaw.github.io/project_1/";
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
