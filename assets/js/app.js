@@ -175,7 +175,9 @@ $(document).on("click", ".event-item", function() {
 
     getFood($(this).attr("data-x"), $(this).attr("data-y"));
 
-})
+});
+
+
 function getFood(x, y){
     // alert("in get Food");
     // var longitude = "-78.795737";
