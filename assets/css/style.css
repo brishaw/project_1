@@ -409,6 +409,13 @@ a:hover.no-footer-text {
   top: 35px;
 }
 
+
+/**** About page ****/
+
+.wrapper {
+  position: absolute;
+}
+
 /*
  * Custom translucent site header
  */
@@ -478,6 +485,7 @@ a:hover.no-footer-text {
 .no-priv-nav a:hover {
   text-decoration: underline;
 }
+
 /*
  * Extra utilities
  */
@@ -557,9 +565,9 @@ a:hover.no-footer-text {
       padding: 10px 10px 12px 10px;
     }
 
-    .no-btn-gray-m {
+    .no-btn-m {
       border-radius: 0;
-      background-color: #cccccc;
+      background-color: #b97cf7;
       height: 50px;
       width: 50px;
   }
@@ -572,6 +580,7 @@ a:hover.no-footer-text {
     padding: 0;
   }
   .no-i-m {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+    transform: translate(-5px);
   }
 }
