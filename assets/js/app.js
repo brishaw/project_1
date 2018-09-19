@@ -177,7 +177,6 @@ $(document).on("click", ".event-item", function() {
 
 })
 function getFood(x, y){
-    $(".results-menu").empty();
     // alert("in get Food");
     // var longitude = "-78.795737";
     // var latitude = "35.728742";
@@ -190,20 +189,22 @@ function getFood(x, y){
         },
         dataType: 'json'
         }).then(function (response) {
-        console.log(response);
-        var results = response.businesses
+            $(".results-menu").empty();
 
-        for (var i=0; i < results.length; i++) {
-            // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-            
-            var foodList = $("<li>");
-            foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+            console.log(response);
+            var results = response.businesses
 
-            $(".results-menu").append(foodList);
+            for (var i=0; i < results.length; i++) {
+                // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
+                
+                var foodList = $("<li>");
+                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+
+                $(".results-menu").append(foodList);
 
 
-        }
-        });
+            }
+            });
 
 }
 
