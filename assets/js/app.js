@@ -56,4 +56,25 @@ function showPosition(position) {
 
 }
 
+var longitude = "-78.795737";
+var latitude = "35.728742";
+
+$.ajax({
+    url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + latitude + "&longitude=" + longitude + "&sort_by=distance",
+    method: "GET",
+    headers: {
+    "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
+    },
+    dataType: 'json'
+    }).then(function (response) {
+    console.log(response);
+    var results = response.businesses
+
+    for (var i=0; i < results.length; i++) {
+    console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (meters): " + results[i].distance + " | Type: " +results[i].categories[0].title);
+
+
+    }
+    });
+
 getLocation();
