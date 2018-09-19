@@ -15,6 +15,7 @@ var dataRef = firebase.database();
 
 //var is_root = "/Users/brianshaw/Documents/UNCBootCamp/code/project_1/index.html";
 var is_root = "/project_1/index.html";
+var is_root_b = "/project_1/";
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
@@ -25,7 +26,7 @@ $(".zip-search").on("click", function (event) {
     // console.log(window.location.pathname);
     // window.location.href = "results.html";
 
-    if (window.location.pathname == is_root) {
+    if (window.location.pathname == is_root || window.location.pathname == is_root_b) {
         alert("root!");
         window.location.href = "results.html";
     } else {
@@ -82,9 +83,12 @@ dataRef.ref().on("child_added", function (childSnapshot) {
             eventsArr.push(event);
 
             console.log("FRICKEN SHOW ME SOMETHING 1:" + eventsArr[i].title);
-            
+            console.log(event.venueLat, event.venueLon);
         }
+       
         //console.log("SHOW ME THE MONEY: " + eventsArr[0].title); 
+        var venLat = event.venueLat;
+
         $(".events-menu").empty();
 
         for (j = 0; j < 5; j++) {
@@ -131,10 +135,10 @@ function showPosition(position) {
 
     var cities = L.layerGroup();
 
-    // L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
-    //     L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-    //     L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-    L.marker([x, y]).bindPopup('This is Golden, CO.').addTo(cities);
+    L.marker([34.0834, -118.367]).bindPopup('Hollywood Improv \n<br>\nMarcella Arguello').addTo(cities),
+    L.marker([34.0908, -118.388]).bindPopup('The Roxy Theatre\n<br>\nAmber Mark').addTo(cities),
+    L.marker([34.1013, -118.328]).bindPopup('The Study Hollywood\n<br>\nBreaking Sound').addTo(cities);
+    //L.marker([x, y]).bindPopup('This is Golden, CO.').addTo(cities);
 
 
     var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
