@@ -144,7 +144,7 @@ function showPosition(position) {
 }
 
 $(document).on("click", ".event-item", function() {
-    // alert("Clicked");
+    alert("Clicked");
 
     getFood($(this).attr("data-x"), $(this).attr("data-y"));
 
@@ -171,13 +171,9 @@ function getFood(x, y){
             
             var foodList = $("<li>");
             foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
-
             $(".results-menu").append(foodList);
-
-
         }
         });
-
 }
 
-getEvents();
+getEvents();    
