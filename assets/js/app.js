@@ -13,61 +13,40 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
-//var is_root = "/Users/brianshaw/Documents/UNCBootCamp/code/project_1/index.html";
-var is_root = "/project_1/index.html";
-var is_root_b = "/project_1/";
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
 
-
 $(".zip-search").on("click", function (event) {
-
-    // console.log(window.location.pathname);
-    // window.location.href = "results.html";
-
-    if (window.location.pathname == is_root || window.location.pathname == is_root_b) {
-        alert("root!");
-        window.location.href = "results.html";
-    } else {
-        alert("not root");
-    }
-
-
-    event.preventDefault();
-
     var zip = $(".zip-input").val();
-    
-    var newZip = {
+    alert(isNaNZ)
+    localStorage.setItem("zip", zip)
+    event.preventDefault();
+    dataRef.ref().push({
         zip: zip
-    }
-
-    dataRef.ref().push(newZip);
-
+    });
+    $(".results-menu").empty();
     $(".zip-input").val("");
-
-    
-
+    getEvents();
 });
 
-dataRef.ref().on("child_added", function (childSnapshot) {
+// dataRef.ref().on("child_added", function (childSnapshot) {
 
-    // Log everything that's coming out of snapshot
-    console.log("child snapshot of zip: " + childSnapshot.val().zip);
-    var theZip = childSnapshot.val().zip;
-    console.log("theZip: " + theZip);
+//     // Log everything that's coming out of snapshot
+//     console.log("child snapshot of zip: " + childSnapshot.val().zip);
+//     var theZip = childSnapshot.val().zip;
+//     console.log("theZip: " + theZip);
 
-
-    queryURL = "https://api.seatgeek.com/2/events?geoip=" + theZip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+function getEvents(){
+    zip = localStorage.getItem("zip");
+    queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-
         console.log("Response: " + response);
         console.log("queryURL: " + queryURL);
         eventsArr = [];
-        
         for (i = 0; i < response.events.length; i++) {
             var event = {};
             event.title = response.events[i].short_title;
@@ -82,37 +61,29 @@ dataRef.ref().on("child_added", function (childSnapshot) {
 
             eventsArr.push(event);
 
-            console.log("FRICKEN SHOW ME SOMETHING 1:" + eventsArr[i].title);
             console.log(event.venueLat, event.venueLon);
         }
        
-        //console.log("SHOW ME THE MONEY: " + eventsArr[0].title); 
         var venLat = event.venueLat;
-
         $(".events-menu").empty();
-
         for (j = 0; j < 5; j++) {
-
             var li = $("<li>");
-
             li.html($("<a>").text(eventsArr[j].title).attr({
                 'data-x':  eventsArr[j].venueLat,
                 'data-y': eventsArr[j].venueLon,
                 class: "event-item",
-                
             }));
-            
-
             $(".events-menu").append(li);
         }
     });
 
-    $(".zip_result").text(childSnapshot.val().zip);
+    $(".zip_result").text(zip);
+}
 
-    // Handle the errors
-}, function (errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-});
+//     // Handle the errors
+// }, function (errorObject) {
+//     console.log("Errors handled: " + errorObject.code);
+// });
 
 
 function getLocation() {
@@ -173,7 +144,7 @@ function showPosition(position) {
     //getEvents();
 
 }
-
+// Click event that takes the event and returns the 10 reastraunts that are closest to the event
 $(document).on("click", ".event-item", function() {
     // alert("Clicked");
 
@@ -181,7 +152,7 @@ $(document).on("click", ".event-item", function() {
 
 });
 
-
+// Function to show 10 restraunts near the clicked event
 function getFood(x, y){
     
     
@@ -203,7 +174,7 @@ function getFood(x, y){
                 // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
                 
                 var foodList = $("<li>");
-                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + " target='_blank'><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
 
                 $(".results-menu").append(foodList);
 
@@ -213,6 +184,5 @@ function getFood(x, y){
 
 }
 
+getEvents();
 getLocation();
-
-
