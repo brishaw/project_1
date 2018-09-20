@@ -183,9 +183,8 @@ $(document).on("click", ".event-item", function() {
 
 
 function getFood(x, y){
-    // alert("in get Food");
-    // var longitude = "-78.795737";
-    // var latitude = "35.728742";
+    
+    
 
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
