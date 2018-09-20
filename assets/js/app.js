@@ -16,6 +16,9 @@ var dataRef = firebase.database();
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
+var eventLat = []; // stores events lat
+var eventLon = []; // stores events lon
+var eventsName = [];
 
 $(".zip-search").on("click", function (event) {
     var zip = $(".zip-input").val();
@@ -48,6 +51,7 @@ function getEvents(){
         for (i = 0; i < response.events.length; i++) {
             var event = {};
             event.title = response.events[i].short_title;
+            eventsName.push(event.title);
             event.datetime = response.events[i].datetime_local;
             event.venueName = response.events[i].venue.name;
             event.venueAddr = response.events[i].venue.address;
@@ -55,13 +59,18 @@ function getEvents(){
             event.venueSt = response.events[i].venue.state;
             event.venueZip = response.events[i].venue.postal_code;
             event.venueLat = response.events[i].venue.location.lat;
+            eventLat.push(event.venueLat);
             event.venueLon = response.events[i].venue.location.lon;
+            eventLon.push(event.venueLon);
 
             eventsArr.push(event);
 
             console.log(event.venueLat, event.venueLon);
+            
         }
        
+        getLocation(); 
+
         var venLat = event.venueLat;
         $(".events-menu").empty();
         for (j = 0; j < 5; j++) {
@@ -69,6 +78,7 @@ function getEvents(){
             li.html($("<a>").text(eventsArr[j].title).attr({
                 'data-x':  eventsArr[j].venueLat,
                 'data-y': eventsArr[j].venueLon,
+                'data-name': eventsName[j],
                 class: "event-item",
             }));
             $(".events-menu").append(li);
@@ -77,6 +87,7 @@ function getEvents(){
 
     $(".zip_result").text(zip);
 }
+
 
 //     // Handle the errors
 // }, function (errorObject) {
@@ -104,12 +115,6 @@ function showPosition(position) {
 
     var cities = L.layerGroup();
 
-    L.marker([34.0834, -118.367]).bindPopup('Hollywood Improv \n<br>\nMarcella Arguello').addTo(cities),
-    L.marker([34.0908, -118.388]).bindPopup('The Roxy Theatre\n<br>\nAmber Mark').addTo(cities),
-    L.marker([34.1013, -118.328]).bindPopup('The Study Hollywood\n<br>\nBreaking Sound').addTo(cities);
-    //L.marker([x, y]).bindPopup('This is Golden, CO.').addTo(cities);
-
-
     var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -119,7 +124,6 @@ function showPosition(position) {
         streets = L.tileLayer(mbUrl, { id: 'mapbox.streets', attribution: mbAttr });
 
     var map = L.map('map', {
-        // center: [39.73, -104.99],
         center: [x, y],
         zoom: 15,
         layers: [grayscale, cities],
@@ -141,15 +145,29 @@ function showPosition(position) {
 
     //getEvents();
 
+    function createPopUps () {
+
+        for (var i = 0; i< eventsArr.length; i++) {
+
+            var thisLat = eventLat[i];
+            var thisLon = eventLon[i];
+            L.marker([thisLat, thisLon]).bindPopup(eventsName[i]).addTo(cities);
+            console.log("i");
+
+        }
+    }
+    createPopUps();
 }
 
 $(document).on("click", ".event-item", function() {
     alert("Clicked");
 
-    getFood($(this).attr("data-x"), $(this).attr("data-y"));
+    getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
+    
 })
-function getFood(x, y){
+
+function getFood(x, y, name){
     $(".results-menu").empty();
     // alert("in get Food");
     // var longitude = "-78.795737";
@@ -172,8 +190,10 @@ function getFood(x, y){
             var foodList = $("<li>");
             foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
             $(".results-menu").append(foodList);
+            var golden = L.marker([x,y]).bindPopup('This is' && name);
         }
         });
 }
 
-getEvents();    
+
+getEvents();
