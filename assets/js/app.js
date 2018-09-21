@@ -13,6 +13,8 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
+
+
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
@@ -78,6 +80,8 @@ function getEvents(){
         console.log("Response: " + response);
         console.log("queryURL: " + queryURL);
         eventsArr = [];
+        eventLat = [];
+        eventLon = [];
         for (i = 0; i < response.events.length; i++) {
             var event = {};
             event.title = response.events[i].short_title;
@@ -98,7 +102,8 @@ function getEvents(){
             console.log(event.venueLat, event.venueLon);
             
         }
-       
+         
+        
         getLocation(); 
 
         var venLat = event.venueLat;
@@ -135,12 +140,12 @@ function getLocation() {
 
 
 function showPosition(position) {
-    x = position.coords.latitude;
-    y = position.coords.longitude;
+    x = eventLat[1];
+    y = eventLon[1];
     console.log("lat: " + x);
 
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("longitude: " + position.coords.longitude);
+    // console.log("Latitude: " + position.coords.latitude);
+    // console.log("longitude: " + position.coords.longitude);
 
 
     var cities = L.layerGroup();
@@ -155,7 +160,7 @@ function showPosition(position) {
 
     var map = L.map('map', {
         center: [x, y],
-        zoom: 15,
+        zoom: 11,
         layers: [grayscale, cities],
         scrollWheelZoom: false
     });
