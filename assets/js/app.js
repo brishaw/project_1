@@ -93,8 +93,6 @@ function getEvents() {
 
         }
 
-        getLocation();
-
         var venLat = event.venueLat;
         $(".events-menu").empty();
         for (j = 0; j < 5; j++) {
