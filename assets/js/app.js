@@ -35,7 +35,7 @@ $(".zip-search").on("click", function (event) {
         var city = zip[0].trim();
         var state = zip[1].trim();
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/D2TblXN7Wgz5Ik9j5mgTBJPWR2VVLC3ZCc2wr8t5e53ktlUi3sI39ZZt7O096rGu/city-zips.json/" + city + "/" + state,
+            url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/xY2EHIrstcd4PQe38SB7Y3My71OxCQMPUL6QWwwp3A39hYhI6xUWL82aTwb3R21c/city-zips.json/" + city + "/" + state,
             method: "GET"
         }).then(function (response) {
             console.log(response);
@@ -46,22 +46,22 @@ $(".zip-search").on("click", function (event) {
             }
             console.log(zip);
             localStorage.setItem("zip", zip);
+            dataRef.ref().push({
+                zip: zip
+            });
+            $(".zip-input").val("");
             getEvents();
         });
-    }
+    } else{
     localStorage.setItem("zip", zip);
     $(".zip-input").val("");
     getEvents();
     dataRef.ref().push({
         zip: zip
     });
-<<<<<<< HEAD
-    $(".results-menu").empty();
     $(".zip-input").val("");
-    getEvents();
-=======
+    }
 
->>>>>>> master
 });
 
 // /d{5} 
@@ -105,12 +105,6 @@ function getEvents() {
             console.log(event.venueLat, event.venueLon);
 
         }
-<<<<<<< HEAD
-         
-        
-        getLocation(); 
-=======
->>>>>>> master
 
         var venLat = event.venueLat;
         $(".events-menu").empty();
@@ -198,40 +192,9 @@ function showPosition(position) {
         }
     }
     createPopUps();
-<<<<<<< HEAD
 }
-// Click event that takes the event and returns the 10 reastraunts that are closest to the event
-$(document).on("click", ".event-item", function() {
-    // alert("Clicked");
-
-        getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
-
-});
-
-// Function to show 10 restraunts near the clicked event
-function getFood(x, y){
-    
-    
-
-    $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
-        method: "GET",
-        headers: {
-        "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
-        },
-        dataType: 'json'
-        }).then(function (response) {
-            $(".results-menu").empty();
-
-            console.log(response);
-            var results = response.businesses
-
-            for (var i=0; i < results.length; i++) {
-                
-=======
 
     $(document).on("click", ".event-item", function () {
-        alert("Clicked");
 
         getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
@@ -239,7 +202,6 @@ function getFood(x, y){
     })
 
     function getFood(x, y, name) {
-        $(".results-menu").empty();
         // alert("in get Food");
         // var longitude = "-78.795737";
         // var latitude = "35.728742";
@@ -252,30 +214,27 @@ function getFood(x, y){
             },
             dataType: 'json'
         }).then(function (response) {
+            $(".results-menu").empty();
+
             console.log(response);
             var results = response.businesses
-            cities.clearLayers();
+            // cities.clearLayers();
             for (var i = 0; i < results.length; i++) {
                 // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-
->>>>>>> master
                 var foodList = $("<li>");
                 foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + " target='_blank'><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
 
                 $(".results-menu").append(foodList);
 
-<<<<<<< HEAD
-
-=======
-                L.marker([x, y]).bindPopup(name).addTo(cities);
-                var enwLat = results[i].coordinates.latitude;
-                var edwLon = results[i].coordinates.longitude;
-                L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
->>>>>>> master
+                // L.marker([x, y]).bindPopup(name).addTo(cities);
+                // var enwLat = results[i].coordinates.latitude;
+                // var edwLon = results[i].coordinates.longitude;
+                // L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
             }
             });
 
 }
+
 
 getEvents();
 getLocation();
