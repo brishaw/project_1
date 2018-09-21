@@ -25,33 +25,32 @@ var eventsName = [];
 $(".zip-search").on("click", function (event) {
     event.preventDefault();
     zip = $(".zip-input").val().trim();
-    if(isZip.test(zip) != true){
+    if (isZip.test(zip) != true) {
         zip = zip.split(",");
         var city = zip[0].trim();
         var state = zip[1].trim();
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/D2TblXN7Wgz5Ik9j5mgTBJPWR2VVLC3ZCc2wr8t5e53ktlUi3sI39ZZt7O096rGu/city-zips.json/" + city + "/" + state,
             method: "GET"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log(response);
-            if(response.zip_codes.length % 2 == 0){
-            zip = response.zip_codes[(response.zip_codes.length / 2)];
-            } else 
-            {
-                zip = response.zip_codes[((response.zip_codes.length -1) / 2)]
+            if (response.zip_codes.length % 2 == 0) {
+                zip = response.zip_codes[(response.zip_codes.length / 2)];
+            } else {
+                zip = response.zip_codes[((response.zip_codes.length - 1) / 2)]
             }
             console.log(zip);
             localStorage.setItem("zip", zip);
             getEvents();
         });
     }
-    localStorage.setItem("zip", zip);    
+    localStorage.setItem("zip", zip);
     $(".zip-input").val("");
     getEvents();
     dataRef.ref().push({
         zip: zip
     });
-    
+
 });
 
 // /d{5} 
@@ -63,7 +62,7 @@ $(".zip-search").on("click", function (event) {
 //     var theZip = childSnapshot.val().zip;
 //     console.log("theZip: " + theZip);
 
-function getEvents(){
+function getEvents() {
     zip = localStorage.getItem("zip");
     queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
     $.ajax({
@@ -91,17 +90,17 @@ function getEvents(){
             eventsArr.push(event);
 
             console.log(event.venueLat, event.venueLon);
-            
+
         }
-       
-        getLocation(); 
+
+        getLocation();
 
         var venLat = event.venueLat;
         $(".events-menu").empty();
         for (j = 0; j < 5; j++) {
             var li = $("<li>");
             li.html($("<a>").text(eventsArr[j].title).attr({
-                'data-x':  eventsArr[j].venueLat,
+                'data-x': eventsArr[j].venueLat,
                 'data-y': eventsArr[j].venueLon,
                 'data-name': eventsName[j],
                 class: "event-item",
@@ -170,7 +169,7 @@ function showPosition(position) {
 
     //getEvents();
 
-    function createPopUps () {
+    function createPopUps() {
 
         for (var i = 0; i < 5; i++) {
 
@@ -183,15 +182,15 @@ function showPosition(position) {
     }
     createPopUps();
 
-    $(document).on("click", ".event-item", function() {
+    $(document).on("click", ".event-item", function () {
         alert("Clicked");
 
         getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
-    
+
     })
 
-    function getFood(x, y, name){
+    function getFood(x, y, name) {
         $(".results-menu").empty();
         // alert("in get Food");
         // var longitude = "-78.795737";
@@ -201,20 +200,20 @@ function showPosition(position) {
             url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
             method: "GET",
             headers: {
-            "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
+                "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
             },
             dataType: 'json'
-            }).then(function (response) {
+        }).then(function (response) {
             console.log(response);
             var results = response.businesses
             cities.clearLayers();
-            for (var i=0; i < results.length; i++) {
+            for (var i = 0; i < results.length; i++) {
                 // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-                
+
                 var foodList = $("<li>");
                 foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
                 $(".results-menu").append(foodList);
-                
+
                 L.marker([x, y]).bindPopup(name).addTo(cities);
                 var enwLat = results[i].coordinates.latitude;
                 var edwLon = results[i].coordinates.longitude;
@@ -224,5 +223,5 @@ function showPosition(position) {
     }
 }
 
-getEvents();    
+getEvents();
 getLocation();

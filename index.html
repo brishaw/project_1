@@ -19,8 +19,8 @@
                     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse pr" id="navbarsExampleDefault">
+                    <ul class="navbar-nav pa no-links">
                         <li class="nav-item bor-top-trans active">
                             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                         </li>
@@ -34,10 +34,10 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control no-input" type="text" placeholder="SEARCH NIGHT OUT" aria-label="SEARCH NIGHT OUT">
-                        <button class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
+                    <!-- <form class="form-inline my-2 my-lg-0">
+                        <input id="your-name" class="form-control no-input" type="text" placeholder="WHAT'S YOUR NAME?" aria-label="WHAT'S YOUR NAME?">
+                        <button id="click-name" class="btn no-btn-gray my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form> -->
                 </div>
             </div>
         </nav>
@@ -54,7 +54,8 @@
                             <input class="no-input-m zip-input" type="text" placeholder="FIND YOUR NIGHT OUT" aria-label="FIND YOUR NIGHT OUT">
                             <button id="init_zip" class="btn no-btn-m my-2 my-sm-0 zip-search" type="submit"><i class="fas fa-search no-i-m"></i></button>
                         </form>
-                        <p>SEARCH BY CITY, STATE OR ZIP CODE</p>
+                        <p>SEARCH BY CITY, STATE, ZIP CODE OR <a href="#" data-toggle="modal" data-target="#dateModal"><i class="far fa-calendar-alt no-calendar"></i></a></p>
+                        
                     </div>
 
                 </div>
@@ -98,6 +99,53 @@
                 <a class="no-footer-text" href="privacy.html">Night Out App</a> &copy 2018 UNC Coding BootCamp
             </div>
         </footer>
+        <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content no-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title">When's Your Night Out?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            Select a date
+                            <input id="noDate" type="date" name="night-out-date">
+                            <input id="noDateSub" class="btn no-modal-button" type="submit">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered no-modal-mw-570" role="document">
+                <div class="modal-content no-modal no-name-modal">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Tonight's the night!</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Would you like other people to find you on your Night Out?</h5>
+                        <form action="">
+                            <p>What's your name tonight?</p>
+                            <input id="noName" class="noNameClass" type="text" name="night-out-date" placeholder="Pat">
+                            <input id="noNameSub" class="btn no-modal-button" type="submit">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No! Sounds Scary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
@@ -107,7 +155,7 @@
             crossorigin="anonymous"></script>
         <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
             crossorigin=""></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
         <script src="assets/js/app_index.js"></script>
+    
     </body>
 </html>
