@@ -16,14 +16,11 @@ var dataRef = firebase.database();
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
-<<<<<<< HEAD
 var isZip = new RegExp(/\d{5}/);
 var zip;
-=======
 var eventLat = []; // stores events lat
 var eventLon = []; // stores events lon
 var eventsName = [];
->>>>>>> master
 
 $(".zip-search").on("click", function (event) {
     event.preventDefault();
