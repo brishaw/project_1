@@ -13,6 +13,8 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
+
+
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
@@ -23,6 +25,9 @@ var eventLon = []; // stores events lon
 var eventsName = [];
 
 $(".zip-search").on("click", function (event) {
+    var zip = $(".zip-input").val();
+    alert(isNaNZ)
+    localStorage.setItem("zip", zip)
     event.preventDefault();
     zip = $(".zip-input").val().trim();
     if (isZip.test(zip) != true) {
@@ -78,6 +83,8 @@ function getEvents() {
         console.log("Response: " + response);
         console.log("queryURL: " + queryURL);
         eventsArr = [];
+        eventLat = [];
+        eventLon = [];
         for (i = 0; i < response.events.length; i++) {
             var event = {};
             event.title = response.events[i].short_title;
@@ -133,12 +140,12 @@ function getLocation() {
 
 
 function showPosition(position) {
-    x = position.coords.latitude;
-    y = position.coords.longitude;
+    x = eventLat[1];
+    y = eventLon[1];
     console.log("lat: " + x);
 
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("longitude: " + position.coords.longitude);
+    // console.log("Latitude: " + position.coords.latitude);
+    // console.log("longitude: " + position.coords.longitude);
 
 
     var cities = L.layerGroup();
@@ -153,7 +160,7 @@ function showPosition(position) {
 
     var map = L.map('map', {
         center: [x, y],
-        zoom: 15,
+        zoom: 11,
         layers: [grayscale, cities],
         scrollWheelZoom: false
     });
@@ -175,7 +182,7 @@ function showPosition(position) {
 
     function createPopUps() {
 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i< 5; i++) {
 
             var thisLat = eventLat[i];
             var thisLon = eventLon[i];
@@ -185,9 +192,9 @@ function showPosition(position) {
         }
     }
     createPopUps();
+}
 
     $(document).on("click", ".event-item", function () {
-        alert("Clicked");
 
         getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
@@ -195,7 +202,6 @@ function showPosition(position) {
     })
 
     function getFood(x, y, name) {
-        $(".results-menu").empty();
         // alert("in get Food");
         // var longitude = "-78.795737";
         // var latitude = "35.728742";
@@ -208,24 +214,27 @@ function showPosition(position) {
             },
             dataType: 'json'
         }).then(function (response) {
+            $(".results-menu").empty();
+
             console.log(response);
             var results = response.businesses
-            cities.clearLayers();
+            // cities.clearLayers();
             for (var i = 0; i < results.length; i++) {
                 // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-
                 var foodList = $("<li>");
-                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + " target='_blank'><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+
                 $(".results-menu").append(foodList);
 
-                L.marker([x, y]).bindPopup(name).addTo(cities);
-                var enwLat = results[i].coordinates.latitude;
-                var edwLon = results[i].coordinates.longitude;
-                L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
+                // L.marker([x, y]).bindPopup(name).addTo(cities);
+                // var enwLat = results[i].coordinates.latitude;
+                // var edwLon = results[i].coordinates.longitude;
+                // L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
             }
-        });
-    }
+            });
+
 }
+
 
 getEvents();
 getLocation();
