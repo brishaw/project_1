@@ -30,7 +30,7 @@ $(".zip-search").on("click", function (event) {
         var city = zip[0].trim();
         var state = zip[1].trim();
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/D2TblXN7Wgz5Ik9j5mgTBJPWR2VVLC3ZCc2wr8t5e53ktlUi3sI39ZZt7O096rGu/city-zips.json/" + city + "/" + state,
+            url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/xY2EHIrstcd4PQe38SB7Y3My71OxCQMPUL6QWwwp3A39hYhI6xUWL82aTwb3R21c/city-zips.json/" + city + "/" + state,
             method: "GET"
         }).then(function (response) {
             console.log(response);
@@ -41,15 +41,21 @@ $(".zip-search").on("click", function (event) {
             }
             console.log(zip);
             localStorage.setItem("zip", zip);
+            dataRef.ref().push({
+                zip: zip
+            });
+            $(".zip-input").val("");
             getEvents();
         });
-    }
+    } else{
     localStorage.setItem("zip", zip);
     $(".zip-input").val("");
     getEvents();
     dataRef.ref().push({
         zip: zip
     });
+    $(".zip-input").val("");
+    }
 
 });
 
