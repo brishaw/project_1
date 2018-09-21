@@ -172,7 +172,7 @@ function showPosition(position) {
 
     function createPopUps () {
 
-        for (var i = 0; i< eventsArr.length; i++) {
+        for (var i = 0; i < 5; i++) {
 
             var thisLat = eventLat[i];
             var thisLon = eventLon[i];
@@ -182,42 +182,46 @@ function showPosition(position) {
         }
     }
     createPopUps();
-}
 
-$(document).on("click", ".event-item", function() {
-    alert("Clicked");
+    $(document).on("click", ".event-item", function() {
+        alert("Clicked");
 
-    getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
+        getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
     
-})
+    })
 
-function getFood(x, y, name){
-    $(".results-menu").empty();
-    // alert("in get Food");
-    // var longitude = "-78.795737";
-    // var latitude = "35.728742";
+    function getFood(x, y, name){
+        $(".results-menu").empty();
+        // alert("in get Food");
+        // var longitude = "-78.795737";
+        // var latitude = "35.728742";
 
-    $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
-        method: "GET",
-        headers: {
-        "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
-        },
-        dataType: 'json'
-        }).then(function (response) {
-        console.log(response);
-        var results = response.businesses
-
-        for (var i=0; i < results.length; i++) {
-            // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-            
-            var foodList = $("<li>");
-            foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
-            $(".results-menu").append(foodList);
-            var golden = L.marker([x,y]).bindPopup('This is' && name);
-        }
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
+            method: "GET",
+            headers: {
+            "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
+            },
+            dataType: 'json'
+            }).then(function (response) {
+            console.log(response);
+            var results = response.businesses
+            cities.clearLayers();
+            for (var i=0; i < results.length; i++) {
+                // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
+                
+                var foodList = $("<li>");
+                foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
+                $(".results-menu").append(foodList);
+                
+                L.marker([x, y]).bindPopup(name).addTo(cities);
+                var enwLat = results[i].coordinates.latitude;
+                var edwLon = results[i].coordinates.longitude;
+                L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
+            }
         });
+    }
 }
 
 getEvents();    
