@@ -59,12 +59,9 @@ $(".zip-search").on("click", function (event) {
     dataRef.ref().push({
         zip: zip
     });
-<<<<<<< HEAD
-=======
     $(".zip-input").val("");
     }
 
->>>>>>> 274f1aaf3f9209d8ba46fcc3408b4e1bcd9dbc94
 });
 
 // /d{5} 
