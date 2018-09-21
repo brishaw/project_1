@@ -41,15 +41,21 @@ $(".zip-search").on("click", function (event) {
             }
             console.log(zip);
             localStorage.setItem("zip", zip);
+            dataRef.ref().push({
+                zip: zip
+            });
+            $(".zip-input").val("");
             getEvents();
         });
-    }
+    } else{
     localStorage.setItem("zip", zip);
     $(".zip-input").val("");
     getEvents();
     dataRef.ref().push({
         zip: zip
     });
+    $(".zip-input").val("");
+    }
 
 });
 
