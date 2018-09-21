@@ -16,20 +16,45 @@ var dataRef = firebase.database();
 var x = "";
 var y = "";
 var eventsArr = []; // create array to store event data
+var isZip = new RegExp(/\d{5}/);
+var zip;
 var eventLat = []; // stores events lat
 var eventLon = []; // stores events lon
 var eventsName = [];
 
 $(".zip-search").on("click", function (event) {
-    var zip = $(".zip-input").val();
-    localStorage.setItem("zip", zip)
     event.preventDefault();
+    zip = $(".zip-input").val().trim();
+    if(isZip.test(zip) != true){
+        zip = zip.split(",");
+        var city = zip[0].trim();
+        var state = zip[1].trim();
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/D2TblXN7Wgz5Ik9j5mgTBJPWR2VVLC3ZCc2wr8t5e53ktlUi3sI39ZZt7O096rGu/city-zips.json/" + city + "/" + state,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            if(response.zip_codes.length % 2 == 0){
+            zip = response.zip_codes[(response.zip_codes.length / 2)];
+            } else 
+            {
+                zip = response.zip_codes[((response.zip_codes.length -1) / 2)]
+            }
+            console.log(zip);
+            localStorage.setItem("zip", zip);
+            getEvents();
+        });
+    }
+    localStorage.setItem("zip", zip);    
+    $(".zip-input").val("");
+    getEvents();
     dataRef.ref().push({
         zip: zip
     });
-    $(".zip-input").val("");
-    getEvents();
+    
 });
+
+// /d{5} 
 
 // dataRef.ref().on("child_added", function (childSnapshot) {
 
@@ -199,7 +224,5 @@ function showPosition(position) {
     }
 }
 
-
-
-
-getEvents();
+getEvents();    
+getLocation();
