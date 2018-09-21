@@ -164,7 +164,7 @@ function showPosition(position) {
 $(document).on("click", ".event-item", function() {
     // alert("Clicked");
 
-    getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
+        getFood($(this).attr("data-x"), $(this).attr("data-y"), $(this).attr("data-name"));
 
 });
 
