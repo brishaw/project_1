@@ -42,7 +42,7 @@ body {
   color: #cccccc;
   background-image: url("../images/bottom_1.png");
   background-position: bottom center;
-  background-image: url(../images/bottom_1.png);
+  /* background-image: url(../images/bottom_1.png); */
   background-repeat: no-repeat;
 }
 
@@ -69,6 +69,18 @@ a:hover {
 
 .mt-2r {
   margin-top: 2rem;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+.no-links {
+  right: 0;
 }
 
 .mt-p25r {
@@ -186,6 +198,17 @@ input[type="text"]:-moz-placeholder { /* Firefox 18- */
   background-color: #a760ee;
 }
 
+.no-calendar {
+  color: #b97cf7;
+  padding-left: 7px;
+  font-size: 1.7rem;
+}
+
+.no-calendar:hover {
+  color: #a760ee;
+  transition: 300ms ease all;
+}
+
 .no-form-m p {
   padding-top: 7px;
   color: #cccccc;
@@ -227,13 +250,53 @@ input.no-input-m[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safar
   color: #cccccc;
 }
 input.no-input-m[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-style: italic;
   color: #cccccc;
 }
 input.no-input-m[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-style: italic;
   color: #cccccc;
 }
 input.no-input-m[type="text"]:-moz-placeholder { /* Firefox 18- */
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-style: italic;
   color: #cccccc;
+}
+
+.no-modal {
+  color: #171717; 
+  border-radius: 0;
+}
+
+.no-modal h5 {
+  color: #171717;
+}
+
+.no-modal-button {
+  color: #000000;
+  background-color: #b97cf7;
+  border-width: 2px;
+  border-color: #5d14a7;
+}
+
+.no-modal-button:hover {
+    background-color: #a760ee;
+}
+
+.no-modal-mw-570 {
+  max-width: 570px;
+}
+
+.no-name-modal input[type="text"] {
+  width: 80%;
+  height: 40px;
+  padding-left: 10px;
+  border: 1px solid #cccccc;
 }
 
 .no-background-hero {
@@ -416,6 +479,10 @@ a:hover.no-footer-text {
   position: absolute;
 }
 
+iframe {
+  border: none;
+}
+
 /*
  * Custom translucent site header
  */
@@ -532,6 +599,14 @@ a:hover.no-footer-text {
     }
 }
 
+@media only screen and (max-width: 768px) {
+  .no-links {
+    right: auto;
+    position: relative;
+  }
+}
+
+
 @media only screen and (max-width: 705px) {
     .no-hero h1 {
         font-size: 7rem;
@@ -583,4 +658,21 @@ a:hover.no-footer-text {
     font-size: 2.1rem;
     transform: translate(-5px);
   }
+}
+
+@media only screen and (max-width: 360px) {
+  .no-name-modal input[type="text"] {
+    width: 70%;
+  }
+
+  .no-input-m {
+    width: 280px;
+        padding-top: 8px;
+  }
+
+  input.no-input-m[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 1.4rem;
+  }
+
+  
 }

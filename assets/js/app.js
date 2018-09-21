@@ -35,8 +35,9 @@ $(".zip-search").on("click", function (event) {
 //     var theZip = childSnapshot.val().zip;
 //     console.log("theZip: " + theZip);
 
-function getEvents(){
+function getEvents() {
     zip = localStorage.getItem("zip");
+    date = localStorage.getItem("nightOutDate");
     queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
     $.ajax({
         url: queryURL,
@@ -61,13 +62,13 @@ function getEvents(){
 
             console.log(event.venueLat, event.venueLon);
         }
-       
-        var venLat = event.venueLat;
+
+        
         $(".events-menu").empty();
         for (j = 0; j < 5; j++) {
             var li = $("<li>");
             li.html($("<a>").text(eventsArr[j].title).attr({
-                'data-x':  eventsArr[j].venueLat,
+                'data-x': eventsArr[j].venueLat,
                 'data-y': eventsArr[j].venueLon,
                 class: "event-item",
             }));
@@ -76,6 +77,18 @@ function getEvents(){
     });
 
     $(".zip_result").text(zip);
+    $(".date_result").text(date);
+
+    var z = $(".no-method-zip");
+    var d = $(".no-method-date");
+
+    if(zip != null) {
+        d.css("display", "none");
+    } else {
+        z.css("display", "none");
+    }
+
+
 }
 
 //     // Handle the errors
@@ -105,8 +118,8 @@ function showPosition(position) {
     var cities = L.layerGroup();
 
     L.marker([34.0834, -118.367]).bindPopup('Hollywood Improv \n<br>\nMarcella Arguello').addTo(cities),
-    L.marker([34.0908, -118.388]).bindPopup('The Roxy Theatre\n<br>\nAmber Mark').addTo(cities),
-    L.marker([34.1013, -118.328]).bindPopup('The Study Hollywood\n<br>\nBreaking Sound').addTo(cities);
+        L.marker([34.0908, -118.388]).bindPopup('The Roxy Theatre\n<br>\nAmber Mark').addTo(cities),
+        L.marker([34.1013, -118.328]).bindPopup('The Study Hollywood\n<br>\nBreaking Sound').addTo(cities);
     //L.marker([x, y]).bindPopup('This is Golden, CO.').addTo(cities);
 
 
@@ -143,13 +156,13 @@ function showPosition(position) {
 
 }
 
-$(document).on("click", ".event-item", function() {
+$(document).on("click", ".event-item", function () {
     alert("Clicked");
 
     getFood($(this).attr("data-x"), $(this).attr("data-y"));
 
 })
-function getFood(x, y){
+function getFood(x, y) {
     $(".results-menu").empty();
     // alert("in get Food");
     // var longitude = "-78.795737";
@@ -159,21 +172,27 @@ function getFood(x, y){
         url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + x + "&longitude=" + y + "&limit=10&sort_by=distance",
         method: "GET",
         headers: {
-        "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
+            "Authorization": "Bearer JfYwM44JdGrfKEHI_CLv183CeDyCNj1wTCKRyyAdt5z0Kox9VckvQd1RLWEcAbVdYdbVLyilCNPxMhV9h5-g1X7qUamUZZPuNZj_riGY2f3X3HGBuFQ6G6vvvuaeW3Yx",
         },
         dataType: 'json'
-        }).then(function (response) {
+    }).then(function (response) {
         console.log(response);
         var results = response.businesses
 
-        for (var i=0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
             // console.log(results[i].name + " | Rating: " + results[i].rating + " | Distance (m): " + results[i].distance + " | Type: " +results[i].categories[0].title);
-            
+
             var foodList = $("<li>");
             foodList.html("<a href=" + results[i].url + " data-latitude=" + results[i].coordinates.latitude + " data-longitude=" + results[i].coordinates.longitude + "><strong> " + results[i].name + "</strong> | Rating: " + results[i].rating + " | Distance (m): " + Math.floor(results[i].distance) + " | Type: " + results[i].categories[0].title + "</a>");
             $(".results-menu").append(foodList);
         }
-        });
+    });
 }
-
+getLocation();
 getEvents();    
+
+dataRef.ref("user").on("value", function (snapshot) {
+    console.log(snapshot.val());
+}, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+});
