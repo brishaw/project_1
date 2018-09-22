@@ -8,10 +8,12 @@ var config = {
 };
 
 firebase.initializeApp(config);
+localStorage.clear();
 
 var dataRef = firebase.database();
 var zip;
 var isZip = new RegExp(/\d{5}/);
+var nightOutDate;
 
 window.onload = $('#nameModal').modal("show");
 
@@ -33,6 +35,7 @@ $(".zip-search").on("click", function (event) {
             }
             localStorage.clear();
             localStorage.setItem("zip", zip);
+            localStorage.setItem("date", nightOutDate);
             dataRef.ref().push({
                 zip: zip
             });
@@ -42,6 +45,7 @@ $(".zip-search").on("click", function (event) {
     else {
         localStorage.clear();
         localStorage.setItem("zip", zip);
+        localStorage.setItem("date", nightOutDate);
         dataRef.ref().push({
             zip: zip
         });
@@ -62,11 +66,10 @@ $("#noNameSub").on("click", function (event) {
 
 $("#noDateSub").on("click", function (event) {
     event.preventDefault();
-    var nightOutDate = $("#noDate").val();
+    nightOutDate = $("#noDate").val();
     localStorage.clear();
-    localStorage.setItem("nightOutDate", nightOutDate);
     dataRef.ref("user").set({
         date: nightOutDate
     });
-    window.location.href = "results.html";
+    $("#no-date").text("Date: " + nightOutDate);
 })
