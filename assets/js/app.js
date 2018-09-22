@@ -12,6 +12,7 @@ var config = {
 firebase.initializeApp(config);
 
 var dataRef = firebase.database();
+var eventDate;
 
 
 
@@ -23,11 +24,9 @@ var zip;
 var eventLat = []; // stores events lat
 var eventLon = []; // stores events lon
 var eventsName = [];
+var cities;
 
 $(".zip-search").on("click", function (event) {
-    var zip = $(".zip-input").val();
-    alert(isNaNZ)
-    localStorage.setItem("zip", zip)
     event.preventDefault();
     zip = $(".zip-input").val().trim();
     if (isZip.test(zip) != true) {
@@ -75,7 +74,12 @@ $(".zip-search").on("click", function (event) {
 
 function getEvents() {
     zip = localStorage.getItem("zip");
-    queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    eventDate = localStorage.getItem("date");
+    if(eventDate != "undefined"){
+        queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&datetime_utc=" + eventDate + "&range=20mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    } else {
+        queryURL = "https://api.seatgeek.com/2/events?geoip=" + zip + "&range=5mi&client_id=MTMxMDU5Mzh8MTUzNjYyMjg1Mi4yOA";
+    }
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -108,7 +112,7 @@ function getEvents() {
 
         var venLat = event.venueLat;
         $(".events-menu").empty();
-        for (j = 0; j < 5; j++) {
+        for (j = 0; (j < eventsArr.length) && (j < 5); j++) {
             var li = $("<li>");
             li.html($("<a>").text(eventsArr[j].title).attr({
                 'data-x': eventsArr[j].venueLat,
@@ -121,6 +125,9 @@ function getEvents() {
     });
 
     $(".zip_result").text(zip);
+    if(eventDate != "undefined"){
+        $(".date_result").text("For the date " + localStorage.getItem("date"));
+    }
 }
 
 
@@ -148,7 +155,7 @@ function showPosition(position) {
     // console.log("longitude: " + position.coords.longitude);
 
 
-    var cities = L.layerGroup();
+    cities = L.layerGroup();
 
     var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -177,8 +184,6 @@ function showPosition(position) {
     };
 
     L.control.layers(baseLayers, overlays).addTo(map);
-
-    //getEvents();
 
     function createPopUps() {
 
@@ -226,10 +231,10 @@ function showPosition(position) {
 
                 $(".results-menu").append(foodList);
 
-                // L.marker([x, y]).bindPopup(name).addTo(cities);
-                // var enwLat = results[i].coordinates.latitude;
-                // var edwLon = results[i].coordinates.longitude;
-                // L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
+                L.marker([x, y]).bindPopup(name).addTo(cities);
+                var enwLat = results[i].coordinates.latitude;
+                var edwLon = results[i].coordinates.longitude;
+                L.marker([enwLat, edwLon]).bindPopup(results[i].name).addTo(cities);
             }
             });
 
